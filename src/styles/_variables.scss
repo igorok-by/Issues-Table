@@ -1,0 +1,30 @@
+// Colors
+$dark-color: #2c2738;
+$default-color: #ffffff;
+$light-color: #ebf4f8;
+$primary-color: #0880ae;
+$secondary-color: #46d6a0;
+$success-color: #f9f871;
+$warning-color: #ff7171;
+$label-color: #756f86;
+$border-color: #dbe2ea;
+$placeholder-color: #7c9cbf;
+
+// Font
+$mainFont: "Roboto", Helvetica, Arial, sans-serif;
+
+// Size
+$mainFontColor: $dark-color;
+$mainFontSize: 16px;
+$mainFontWeight: 400;
+$mainLineHeight: 1;
+
+// Transition
+$def-transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+$long-transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+
+// Breakpoints
+$screen-phone: 480px;
+$screen-sm-tablet: 768px;
+$screen-tablet: 992px;
+$screen-desktop: 1200px;

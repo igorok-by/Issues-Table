@@ -1,0 +1,26 @@
+{
+  "name": "issues-table",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "format": "prettier --write src"
+  },
+  "dependencies": {
+    "antd": "^4.8.5",
+    "classnames": "^2.2.6",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.3",
+    "redux": "^4.0.5"
+  },
+  "devDependencies": {
+    "eslint-plugin-prettier": "^3.1.4",
+    "node-sass": "^4.14.1",
+    "prettier": "^2.2.0"
+  }
+}
