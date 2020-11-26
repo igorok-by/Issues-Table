@@ -25,7 +25,7 @@ const LoginPage = () => {
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
             >
-              <Title level={2} className="login-form__title">
+              <Title level={2} className="login-page__title">
                 Log in
               </Title>
               <Form.Item

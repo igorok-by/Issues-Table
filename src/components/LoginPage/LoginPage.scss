@@ -1,5 +1,12 @@
 @import "../../styles/variables";
 
-.login-form__title {
+.login-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.login-page__title {
   text-align: center;
 }

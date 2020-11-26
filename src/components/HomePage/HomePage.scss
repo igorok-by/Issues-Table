@@ -1,0 +1,61 @@
+@import "../../styles/variables";
+
+.ant-layout.home-page {
+  background: none;
+}
+
+.home-page {
+  .home-page__header {
+    background: $light-color;
+  }
+
+  .home-page__menu {
+    background: $light-color;
+    border: none;
+  }
+
+  .home-page__content {
+    padding: 30px 15px;
+  }
+
+  .home-page__column-title {
+    margin: 0;
+
+    text-align: center;
+  }
+
+  .home-page__cell-name {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+
+    span:last-of-type {
+      font-size: 0.7em;
+      color: rgba($color: $dark-color, $alpha: 0.6);
+    }
+  }
+
+  .home-page__table-column {
+    padding: 15px 10px;
+
+    &--descr {
+      width: 30%;
+    }
+
+    &--comment {
+      width: 20%;
+    }
+
+    &--date {
+      width: 95px;
+    }
+  }
+
+  .home-page__table-row {
+    @for $i from 0 through 3 {
+      &--#{$i + 1} {
+        background-color: rgba($color: $success-color, $alpha: 0.025+($i * 0.05));
+      }
+    }
+  }
+}
