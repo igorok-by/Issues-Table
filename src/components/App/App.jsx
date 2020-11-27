@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import { issuesData, STATUSES, DEFAULT_COMMENT } from '../../data'
@@ -16,11 +16,41 @@ const App = () => {
     })),
   )
 
+  const handleCommentStartEdit = useCallback((commentId) => {
+    setIssues((prevIssues) =>
+      prevIssues.map((issue) =>
+        issue.id === commentId && issue.comment === DEFAULT_COMMENT
+          ? { ...issue, comment: '' }
+          : issue,
+      ),
+    )
+  }, [])
+
+  const handleCommentChange = useCallback((newComment, commentId) => {
+    setIssues((prevIssues) =>
+      prevIssues.map((issue) => {
+        if (issue.id === commentId) {
+          const updatedComment =
+            newComment.trim() === DEFAULT_COMMENT || !newComment.trim()
+              ? DEFAULT_COMMENT
+              : newComment
+          return { ...issue, comment: updatedComment }
+        }
+
+        return issue
+      }),
+    )
+  }, [])
+
   return (
     <Router>
       <Switch>
         <Route path="/">
-          <HomePage rowsData={issues} />
+          <HomePage
+            rowsData={issues}
+            handleCommentStartEdit={handleCommentStartEdit}
+            handleCommentChange={handleCommentChange}
+          />
         </Route>
         <Route path="/login">
           <LoginPage />

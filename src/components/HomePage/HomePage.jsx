@@ -7,7 +7,11 @@ import './HomePage.scss'
 const { Header, Content } = Layout
 const { Title, Paragraph } = Typography
 
-const HomePage = ({ rowsData }) => {
+const HomePage = ({
+  rowsData,
+  handleCommentStartEdit,
+  handleCommentChange,
+}) => {
   const statusOptions = STATUSES.map((status) => ({ value: status }))
 
   const columns = [
@@ -133,7 +137,16 @@ const HomePage = ({ rowsData }) => {
         ></Select>
       ),
       comment: (
-        <Paragraph editable={{ autoSize: { maxRows: 3 } }}>{comment}</Paragraph>
+        <Paragraph
+          editable={{
+            autoSize: { maxRows: 3 },
+            onStart: (commentId = id) => handleCommentStartEdit(commentId),
+            onChange: (newComment, commentId = id) =>
+              handleCommentChange(newComment, commentId),
+          }}
+        >
+          {comment}
+        </Paragraph>
       ),
       date,
       delete: (
