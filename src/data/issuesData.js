@@ -9,7 +9,6 @@ export const issuesData = [
     location: 'home',
     description:
       'Nam quae ipsa pariatur cupiditate nobis fuga hic aspernatur sed blanditiis tempora, obcaecati dignissimos accusantium omnis vitae quasi fugiat?',
-    status: 'not started',
     date: '2020-11-23',
   },
   {
@@ -22,7 +21,6 @@ export const issuesData = [
     location: 'office',
     description:
       'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam quae ipsa pariatur cupiditate nobis fuga hic aspernatur sed blanditiis tempora. Dignissimos!',
-    status: 'in progress',
     date: '2020-11-19',
   },
   {
@@ -35,7 +33,6 @@ export const issuesData = [
     location: 'home',
     description:
       'Nam quae ipsa pariatur cupiditate nobis fuga hic aspernatur sed blanditiis tempora, obcaecati dignissimos accusantium omnis vitae quasi fugiat?',
-    status: 'not started',
     date: '2020-11-11',
   },
   {
@@ -48,7 +45,6 @@ export const issuesData = [
     location: 'office',
     description:
       'Nam quae ipsa pariatur cupiditate nobis fuga hic aspernatur sed blanditiis tempora, obcaecati dignissimos accusantium omnis vitae quasi fugiat? Aliquam, alias. Dignissimos!',
-    status: 'done',
     date: '2020-11-26',
   },
 ]

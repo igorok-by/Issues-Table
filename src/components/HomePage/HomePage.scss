@@ -35,6 +35,10 @@
     }
   }
 
+  .home-page__cell-select {
+    width: 100%;
+  }
+
   .home-page__table-column {
     padding: 15px 10px;
 
@@ -44,6 +48,10 @@
 
     &--comment {
       width: 20%;
+    }
+
+    &--status {
+      width: 60px;
     }
 
     &--date {

@@ -1,12 +1,15 @@
 import React from 'react'
-import { Button, Layout, Menu, Table, Typography } from 'antd'
+import { Button, Layout, Menu, Table, Select, Typography } from 'antd'
 
+import { STATUSES } from '../../data'
 import './HomePage.scss'
 
 const { Header, Content } = Layout
 const { Title, Paragraph } = Typography
 
 const HomePage = ({ rowsData }) => {
+  const statusOptions = STATUSES.map((status) => ({ value: status }))
+
   const columns = [
     {
       title: <p className="home-page__column-title">Severity</p>,
@@ -80,7 +83,7 @@ const HomePage = ({ rowsData }) => {
       title: <p className="home-page__column-title">Status</p>,
       dataIndex: 'status',
       align: 'center',
-      className: 'home-page__table-column',
+      className: 'home-page__table-column home-page__table-column--status',
     },
     {
       title: <p className="home-page__column-title">Comment</p>,
@@ -102,7 +105,16 @@ const HomePage = ({ rowsData }) => {
   ]
 
   const rows = rowsData.map(
-    ({ id, severity, userInfo, location, description, status, date }) => ({
+    ({
+      id,
+      severity,
+      userInfo,
+      location,
+      description,
+      status,
+      comment,
+      date,
+    }) => ({
       key: id,
       severity,
       user: (
@@ -113,11 +125,15 @@ const HomePage = ({ rowsData }) => {
       ),
       location,
       description,
-      status,
+      status: (
+        <Select
+          className="home-page__cell-select"
+          defaultValue={status}
+          options={statusOptions}
+        ></Select>
+      ),
       comment: (
-        <Paragraph editable={{ autoSize: { maxRows: 3 } }}>
-          no comment yet
-        </Paragraph>
+        <Paragraph editable={{ autoSize: { maxRows: 3 } }}>{comment}</Paragraph>
       ),
       date,
       delete: (
