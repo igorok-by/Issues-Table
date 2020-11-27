@@ -5,8 +5,30 @@
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
-}
 
-.login-page__title {
-  text-align: center;
+  .login-page-card {
+    max-width: 700px;
+    margin: 0 auto;
+
+    background-color: $light-color;
+  }
+
+  .login-page__title {
+    text-align: center;
+  }
+
+  .login-page__message {
+    text-align: center;
+    color: $warning-color;
+
+    visibility: hidden;
+    opacity: 0;
+
+    transition: $def-transition;
+
+    &--shown {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
 }

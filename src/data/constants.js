@@ -7,3 +7,6 @@ export const URL_PATHS = {
   HOME: '/home',
   STATISTICS: '/statistics',
 }
+
+export const USER_NAME = 'admin'
+export const USER_PASSWORD = 'admin'

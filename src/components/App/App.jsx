@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
 import { Layout } from 'antd'
 
 import PageHeader from '../PageHeader'
@@ -21,6 +21,8 @@ const App = () => {
       isDeleted: false,
     })),
   )
+
+  const [isLogged, setIsLogged] = useState(false)
 
   const rowsData = issues.filter((issue) => !issue.isDeleted)
 
@@ -68,8 +70,9 @@ const App = () => {
 
   return (
     <Router>
+      {!isLogged ? <Redirect to={LOGIN} /> : <Redirect to={HOME} />}
       <Route path={LOGIN} exact>
-        <LoginPage />
+        <LoginPage setIsLogged={setIsLogged} />
       </Route>
 
       <Layout className="app">
