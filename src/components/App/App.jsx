@@ -42,6 +42,14 @@ const App = () => {
     )
   }, [])
 
+  const handleSelectChange = useCallback((selectedValue, rowId) => {
+    setIssues((prevIssues) =>
+      prevIssues.map((issue) =>
+        issue.id === rowId ? { ...issue, status: selectedValue } : issue,
+      ),
+    )
+  }, [])
+
   return (
     <Router>
       <Switch>
@@ -50,6 +58,7 @@ const App = () => {
             rowsData={issues}
             handleCommentStartEdit={handleCommentStartEdit}
             handleCommentChange={handleCommentChange}
+            handleSelectChange={handleSelectChange}
           />
         </Route>
         <Route path="/login">

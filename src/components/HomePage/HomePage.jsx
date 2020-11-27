@@ -11,6 +11,7 @@ const HomePage = ({
   rowsData,
   handleCommentStartEdit,
   handleCommentChange,
+  handleSelectChange,
 }) => {
   const statusOptions = STATUSES.map((status) => ({ value: status }))
 
@@ -134,6 +135,9 @@ const HomePage = ({
           className="home-page__cell-select"
           defaultValue={status}
           options={statusOptions}
+          onChange={(selectedValue, option, rowId = id) =>
+            handleSelectChange(selectedValue, rowId)
+          }
         ></Select>
       ),
       comment: (
