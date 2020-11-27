@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Layout, Menu, Table, Select, Typography } from 'antd'
+import { Layout, Menu, Table, Select, Popconfirm, Typography } from 'antd'
 
 import { STATUSES } from '../../data'
 import './HomePage.scss'
@@ -12,7 +12,9 @@ const HomePage = ({
   handleCommentStartEdit,
   handleCommentChange,
   handleSelectChange,
+  handleDeleteIssue,
 }) => {
+  console.log(rowsData)
   const statusOptions = STATUSES.map((status) => ({ value: status }))
 
   const columns = [
@@ -144,9 +146,9 @@ const HomePage = ({
         <Paragraph
           editable={{
             autoSize: { maxRows: 3 },
-            onStart: (commentId = id) => handleCommentStartEdit(commentId),
-            onChange: (newComment, commentId = id) =>
-              handleCommentChange(newComment, commentId),
+            onStart: (issueId = id) => handleCommentStartEdit(issueId),
+            onChange: (newComment, issueId = id) =>
+              handleCommentChange(newComment, issueId),
           }}
         >
           {comment}
@@ -154,9 +156,25 @@ const HomePage = ({
       ),
       date,
       delete: (
-        <Button size="small" type="link" danger>
-          Delete
-        </Button>
+        <Popconfirm
+          title="Are you sure to delete this issue?"
+          onConfirm={(e, rowId = id) => handleDeleteIssue(rowId)}
+          okText="Yes"
+          cancelText="No"
+          placement="topRight"
+        >
+          <a href=" ">Delete</a>
+        </Popconfirm>
+
+        // <Button
+        //   id={id}
+        //   size="small"
+        //   type="link"
+        //   danger
+        //   onClick={handleDeleteIssue}
+        // >
+        //   Delete
+        // </Button>
       ),
     }),
   )

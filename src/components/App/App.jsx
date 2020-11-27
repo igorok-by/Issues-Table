@@ -16,6 +16,8 @@ const App = () => {
     })),
   )
 
+  const rowsData = issues.filter((issue) => !issue.isDeleted)
+
   const handleCommentStartEdit = useCallback((commentId) => {
     setIssues((prevIssues) =>
       prevIssues.map((issue) =>
@@ -50,15 +52,24 @@ const App = () => {
     )
   }, [])
 
+  const handleDeleteIssue = useCallback((rowId) => {
+    setIssues((prevIssues) =>
+      prevIssues.map((issue) =>
+        issue.id === rowId ? { ...issue, isDeleted: true } : issue,
+      ),
+    )
+  }, [])
+
   return (
     <Router>
       <Switch>
         <Route path="/">
           <HomePage
-            rowsData={issues}
+            rowsData={rowsData}
             handleCommentStartEdit={handleCommentStartEdit}
             handleCommentChange={handleCommentChange}
             handleSelectChange={handleSelectChange}
+            handleDeleteIssue={handleDeleteIssue}
           />
         </Route>
         <Route path="/login">
