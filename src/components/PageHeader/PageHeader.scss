@@ -1,0 +1,21 @@
+@import "../../styles/variables";
+
+.app {
+  .header {
+    background: $light-color;
+  }
+
+  .header__link {
+    padding-right: 20px;
+
+    font-size: 20px;
+    color: $primary-color;
+
+    transition: $def-transition;
+
+    &--active,
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

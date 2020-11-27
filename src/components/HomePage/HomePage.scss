@@ -1,21 +1,17 @@
 @import "../../styles/variables";
 
-.ant-layout.home-page {
-  background: none;
-}
+.app {
+  .home-page {
+    padding: 30px 15px;
 
-.home-page {
-  .home-page__header {
-    background: $light-color;
+    h1 {
+      text-align: center;
+    }
   }
 
   .home-page__menu {
     background: $light-color;
     border: none;
-  }
-
-  .home-page__content {
-    padding: 30px 15px;
   }
 
   .home-page__column-title {

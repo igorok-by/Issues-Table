@@ -1,10 +1,16 @@
 import React, { useCallback, useState } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Layout } from 'antd'
 
-import { issuesData, STATUSES, DEFAULT_COMMENT } from '../../data'
+import PageHeader from '../PageHeader'
 import LoginPage from '../LoginPage'
+import StatisticsPage from '../StatisticsPage'
 import HomePage from '../HomePage'
 import './App.scss'
+
+import { issuesData, STATUSES, DEFAULT_COMMENT, URL_PATHS } from '../../data'
+
+const { HOME, STATISTICS, LOGIN } = URL_PATHS
 
 const App = () => {
   const [issues, setIssues] = useState(
@@ -62,8 +68,16 @@ const App = () => {
 
   return (
     <Router>
-      <Switch>
+      <Route path={LOGIN} exact>
+        <LoginPage />
+      </Route>
+
+      <Layout className="app">
         <Route path="/">
+          <PageHeader />
+        </Route>
+
+        <Route path={HOME}>
           <HomePage
             rowsData={rowsData}
             handleCommentStartEdit={handleCommentStartEdit}
@@ -72,10 +86,10 @@ const App = () => {
             handleDeleteIssue={handleDeleteIssue}
           />
         </Route>
-        <Route path="/login">
-          <LoginPage />
+        <Route path={STATISTICS}>
+          <StatisticsPage />
         </Route>
-      </Switch>
+      </Layout>
     </Router>
   )
 }

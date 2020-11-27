@@ -1,10 +1,10 @@
 import React from 'react'
-import { Layout, Menu, Table, Select, Popconfirm, Typography } from 'antd'
+import { Layout, Table, Select, Popconfirm, Typography } from 'antd'
 
 import { STATUSES } from '../../data'
 import './HomePage.scss'
 
-const { Header, Content } = Layout
+const { Content } = Layout
 const { Title, Paragraph } = Typography
 
 const HomePage = ({
@@ -14,7 +14,6 @@ const HomePage = ({
   handleSelectChange,
   handleDeleteIssue,
 }) => {
-  console.log(rowsData)
   const statusOptions = STATUSES.map((status) => ({ value: status }))
 
   const columns = [
@@ -165,16 +164,6 @@ const HomePage = ({
         >
           <a href=" ">Delete</a>
         </Popconfirm>
-
-        // <Button
-        //   id={id}
-        //   size="small"
-        //   type="link"
-        //   danger
-        //   onClick={handleDeleteIssue}
-        // >
-        //   Delete
-        // </Button>
       ),
     }),
   )
@@ -187,28 +176,16 @@ const HomePage = ({
   }
 
   return (
-    <Layout className="home-page">
-      <Header className="home-page__header">
-        <Menu
-          className="home-page__menu"
-          mode="horizontal"
-          defaultSelectedKeys={['Home']}
-        >
-          <Menu.Item key="Home">Home</Menu.Item>
-          <Menu.Item key="Statistics">Statistics</Menu.Item>
-        </Menu>
-      </Header>
-      <Content className="home-page__content">
-        <Title level={1}>Issues</Title>
-        <Table
-          columns={columns}
-          dataSource={rows}
-          rowClassName={setRowClass}
-          onChange={onChange}
-          bordered
-        />
-      </Content>
-    </Layout>
+    <Content className="home-page">
+      <Title level={1}>Issues</Title>
+      <Table
+        columns={columns}
+        dataSource={rows}
+        rowClassName={setRowClass}
+        onChange={onChange}
+        bordered
+      />
+    </Content>
   )
 }
 
