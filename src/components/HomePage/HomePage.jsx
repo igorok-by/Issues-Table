@@ -16,69 +16,49 @@ const HomePage = ({
 }) => {
   const statusOptions = STATUSES.map((status) => ({ value: status }))
 
+  const severityFilters = [...new Set(rowsData.map(({ severity }) => severity))]
+    .map((severity) => ({
+      text: severity,
+      value: severity,
+    }))
+    .sort((a, b) => a.value - b.value)
+
+  const locationFilters = [
+    ...new Set(rowsData.map(({ location }) => location)),
+  ].map((location) => ({
+    text: location,
+    value: location,
+  }))
+
+  const statusFilters = STATUSES.map((status) => ({
+    text: status,
+    value: status,
+  }))
+
   const columns = [
     {
       title: <p className="home-page__column-title">Severity</p>,
       dataIndex: 'severity',
       align: 'center',
       className: 'home-page__table-column',
-      // filters: [
-      //   {
-      //     text: 'Joe',
-      //     value: 'Joe',
-      //   },
-      //   {
-      //     text: 'Jim',
-      //     value: 'Jim',
-      //   },
-      //   {
-      //     text: 'Submenu',
-      //     value: 'Submenu',
-      //     children: [
-      //       {
-      //         text: 'Green',
-      //         value: 'Green',
-      //       },
-      //       {
-      //         text: 'Black',
-      //         value: 'Black',
-      //       },
-      //     ],
-      //   },
-      // ],
-      // specify the condition of filtering result
-      // here is that finding the name started with `value`
-      // onFilter: (value, record) => record.name.indexOf(value) === 0,
-      // sorter: (a, b) => a.name.length - b.name.length,
-      // sortDirections: ['descend'],
+      filters: severityFilters,
+      onFilter: (value, row) => row.severity === value,
+      sorter: (a, b) => a.severity - b.severity,
+      sortDirections: ['descend', 'ascend'],
     },
     {
       title: <p className="home-page__column-title">User</p>,
       dataIndex: 'user',
       align: 'center',
       className: 'home-page__table-column',
-      // defaultSortOrder: 'descend',
-      // sorter: (a, b) => a.age - b.age,
     },
     {
       title: <p className="home-page__column-title">User location</p>,
       dataIndex: 'location',
       align: 'center',
       className: 'home-page__table-column',
-      // filters: [
-      //   {
-      //     text: 'London',
-      //     value: 'London',
-      //   },
-      //   {
-      //     text: 'New York',
-      //     value: 'New York',
-      //   },
-      // ],
-      // filterMultiple: false,
-      // onFilter: (value, record) => record.address.indexOf(value) === 0,
-      // sorter: (a, b) => a.address.length - b.address.length,
-      // sortDirections: ['descend', 'ascend'],
+      filters: locationFilters,
+      onFilter: (value, row) => row.location === value,
     },
     {
       title: <p className="home-page__column-title">Issue description</p>,
@@ -90,6 +70,8 @@ const HomePage = ({
       dataIndex: 'status',
       align: 'center',
       className: 'home-page__table-column home-page__table-column--status',
+      filters: statusFilters,
+      onFilter: (value, row) => row.status.props.defaultValue === value,
     },
     {
       title: <p className="home-page__column-title">Comment</p>,
@@ -167,13 +149,14 @@ const HomePage = ({
       ),
     }),
   )
+  console.log(rows)
 
   const setRowClass = ({ severity }) =>
     `home-page__table-row home-page__table-row--${severity}`
 
-  const onChange = (pagination, filters, sorter, extra) => {
-    console.log('params', pagination, filters, sorter, extra)
-  }
+  // const onChange = (pagination, filters, sorter, extra) => {
+  //   console.log('params', pagination, filters, sorter, extra)
+  // }
 
   return (
     <Content className="home-page">
@@ -182,7 +165,7 @@ const HomePage = ({
         columns={columns}
         dataSource={rows}
         rowClassName={setRowClass}
-        onChange={onChange}
+        // onChange={onChange}
         bordered
       />
     </Content>

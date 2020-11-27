@@ -47,4 +47,16 @@ export const issuesData = [
       'Nam quae ipsa pariatur cupiditate nobis fuga hic aspernatur sed blanditiis tempora, obcaecati dignissimos accusantium omnis vitae quasi fugiat? Aliquam, alias. Dignissimos!',
     date: '2020-11-26',
   },
+  {
+    id: '0005',
+    severity: 2,
+    userInfo: {
+      name: 'Spider-man',
+      position: 'Developer',
+    },
+    location: 'office',
+    description:
+      'Nam quae ipsa pariatur cupiditate nobis fuga hic aspernatur sed blanditiis tempora, obcaecati dignissimos accusantium omnis vitae quasi fugiat? Aliquam, alias. Dignissimos!',
+    date: '2020-11-26',
+  },
 ]
